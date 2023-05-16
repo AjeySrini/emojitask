@@ -74,6 +74,10 @@ subbutton.setAttribute("class", " btn btn-secondary");
 subbutton.innerHTML = "Submit";
 
 subbutton.addEventListener("click",foo);
+var disp =document.createElement("div");
+disp.setAttribute("type","text");
+disp.style.marginTop="20px";
+disp.style.backgroundColor="gray";;
 
 async function foo(){
 
@@ -95,18 +99,14 @@ async function foo(){
      res1= await res.json();
 
     }
-    var disp =document.createElement("div");
-    disp.setAttribute("type","text");
-    disp.style.textAlign="center";
-   disp.style.marginTop="10px";
-   disp.style.backgroundColor="gray";
+
 
   if(optionValue=="Random"){
-    disp.innerHTML="";
     var value=res1.unicode[0].split("+");
      disp.innerHTML = String.fromCodePoint(parseInt(value[1], 16)) ;
      
     }else if(optionValue=="All"){
+        disp.innerHTML="";
         for(let i=0;i<res1.length;i++){
             var value=res1[i].unicode[0].split("+");
             disp.innerHTML += String.fromCodePoint(parseInt(value[1], 16)) ;
@@ -114,14 +114,16 @@ async function foo(){
 
     }
     
-    document.body.append(disp);
+    
 }
 
-    
+document.body.append(disp);   
+
 var br=document.createElement("br");
 var br1=document.createElement("br");
 var br2=document.createElement("br");
+var br3=document.createElement("br");
 
-div.append(label,br,input,label1,input1,label2,br2,subbutton);
+div.append(label,br,input,label1,input1,label2,br2,subbutton,br3,disp);
 document.body.append(h1,div);
 
